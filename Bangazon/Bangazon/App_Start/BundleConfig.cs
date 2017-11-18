@@ -21,8 +21,8 @@ namespace Bangazon
                     "~/Scripts/angular-route.js",
                     "~/ngApp/app.js",
                     "~/ngApp/appconfig.js")
-                .IncludeDirectory("~/app/Controllers", "*.js", true)
-                .IncludeDirectory("~/app/Factories", "*.js", true));
+                .IncludeDirectory("~/ngApp/Controllers", "*.js", true)
+                .IncludeDirectory("~/ngApp/Factories", "*.js", true));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
