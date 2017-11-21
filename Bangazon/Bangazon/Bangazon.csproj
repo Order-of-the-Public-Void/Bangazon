@@ -237,9 +237,9 @@
     <Compile Include="Migrations\201711181621508_IdentitySetUp.Designer.cs">
       <DependentUpon>201711181621508_IdentitySetUp.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711210016446_TableSetUp.cs" />
-    <Compile Include="Migrations\201711210016446_TableSetUp.Designer.cs">
-      <DependentUpon>201711210016446_TableSetUp.cs</DependentUpon>
+    <Compile Include="Migrations\201711210059577_SetUpTables.cs" />
+    <Compile Include="Migrations\201711210059577_SetUpTables.Designer.cs">
+      <DependentUpon>201711210059577_SetUpTables.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -347,8 +347,8 @@
     <EmbeddedResource Include="Migrations\201711181621508_IdentitySetUp.resx">
       <DependentUpon>201711181621508_IdentitySetUp.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711210016446_TableSetUp.resx">
-      <DependentUpon>201711210016446_TableSetUp.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711210059577_SetUpTables.resx">
+      <DependentUpon>201711210059577_SetUpTables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

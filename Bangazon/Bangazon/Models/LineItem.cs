@@ -10,8 +10,8 @@ namespace Bangazon.Models
     {
 		[Key]
 		public int LineItemId { get; set; }
-        public virtual List<Order> Orders { get; set; }
-        public virtual List<Product> Products { get; set; }
+        public virtual Order Orders { get; set; }
+        public virtual Product Products { get; set; }
         public int Quantity { get; set; }
         public decimal Rating { get; set; }
     }

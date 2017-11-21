@@ -10,11 +10,12 @@ namespace Bangazon.Models
     {
 		[Key]
 		public int OrderId { get; set; }
-        public virtual List<User> Users { get; set; }
+        public virtual User Users { get; set; }
         public DateTime OrderDate { get; set; }
         public bool OrderStatus { get; set; }
         public string ShippingStreet { get; set; }
         public string ShippingCity { get; set; }
+		public string ShippingState { get; set; }
         public int ShippingZip { get; set; }
 
     }

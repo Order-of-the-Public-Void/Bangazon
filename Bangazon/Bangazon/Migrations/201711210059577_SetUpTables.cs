@@ -3,7 +3,7 @@ namespace Bangazon.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class TableSetUp : DbMigration
+    public partial class SetUpTables : DbMigration
     {
         public override void Up()
         {
@@ -14,8 +14,14 @@ namespace Bangazon.Migrations
                         LineItemId = c.Int(nullable: false, identity: true),
                         Quantity = c.Int(nullable: false),
                         Rating = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        Orders_OrderId = c.Int(),
+                        Products_ProductId = c.Int(),
                     })
-                .PrimaryKey(t => t.LineItemId);
+                .PrimaryKey(t => t.LineItemId)
+                .ForeignKey("dbo.Orders", t => t.Orders_OrderId)
+                .ForeignKey("dbo.Products", t => t.Products_ProductId)
+                .Index(t => t.Orders_OrderId)
+                .Index(t => t.Products_ProductId);
             
             CreateTable(
                 "dbo.Orders",
@@ -26,12 +32,13 @@ namespace Bangazon.Migrations
                         OrderStatus = c.Boolean(nullable: false),
                         ShippingStreet = c.String(),
                         ShippingCity = c.String(),
+                        ShippingState = c.String(),
                         ShippingZip = c.Int(nullable: false),
-                        LineItem_LineItemId = c.Int(),
+                        Users_UserId = c.Int(),
                     })
                 .PrimaryKey(t => t.OrderId)
-                .ForeignKey("dbo.LineItems", t => t.LineItem_LineItemId)
-                .Index(t => t.LineItem_LineItemId);
+                .ForeignKey("dbo.Users", t => t.Users_UserId)
+                .Index(t => t.Users_UserId);
             
             CreateTable(
                 "dbo.Users",
@@ -42,23 +49,15 @@ namespace Bangazon.Migrations
                         LName = c.String(),
                         City = c.String(),
                         Street = c.String(),
+                        State = c.String(),
                         Zip = c.Int(nullable: false),
                         Phone = c.Int(nullable: false),
                         UserName = c.String(),
-                        Order_OrderId = c.Int(),
-                        PaymentMethod_PaymentMethodId = c.Int(),
                         Recommendation_RecommendationId = c.Int(),
-                        Recommendation_RecommendationId1 = c.Int(),
                     })
                 .PrimaryKey(t => t.UserId)
-                .ForeignKey("dbo.Orders", t => t.Order_OrderId)
-                .ForeignKey("dbo.PaymentMethods", t => t.PaymentMethod_PaymentMethodId)
                 .ForeignKey("dbo.Recommendations", t => t.Recommendation_RecommendationId)
-                .ForeignKey("dbo.Recommendations", t => t.Recommendation_RecommendationId1)
-                .Index(t => t.Order_OrderId)
-                .Index(t => t.PaymentMethod_PaymentMethodId)
-                .Index(t => t.Recommendation_RecommendationId)
-                .Index(t => t.Recommendation_RecommendationId1);
+                .Index(t => t.Recommendation_RecommendationId);
             
             CreateTable(
                 "dbo.Products",
@@ -74,17 +73,8 @@ namespace Bangazon.Migrations
                         LocalDelivery = c.Boolean(nullable: false),
                         DeliveryCity = c.String(),
                         PossibilityCoefficient = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        LineItem_LineItemId = c.Int(),
-                        ProductImage_ProductImagesId = c.Int(),
-                        Recommendation_RecommendationId = c.Int(),
                     })
-                .PrimaryKey(t => t.ProductId)
-                .ForeignKey("dbo.LineItems", t => t.LineItem_LineItemId)
-                .ForeignKey("dbo.ProductImages", t => t.ProductImage_ProductImagesId)
-                .ForeignKey("dbo.Recommendations", t => t.Recommendation_RecommendationId)
-                .Index(t => t.LineItem_LineItemId)
-                .Index(t => t.ProductImage_ProductImagesId)
-                .Index(t => t.Recommendation_RecommendationId);
+                .PrimaryKey(t => t.ProductId);
             
             CreateTable(
                 "dbo.ProductCategories",
@@ -114,8 +104,11 @@ namespace Bangazon.Migrations
                         CVV = c.Int(nullable: false),
                         ExpirationDate = c.DateTime(nullable: false),
                         CardholderName = c.String(),
+                        Users_UserId = c.Int(),
                     })
-                .PrimaryKey(t => t.PaymentMethodId);
+                .PrimaryKey(t => t.PaymentMethodId)
+                .ForeignKey("dbo.Users", t => t.Users_UserId)
+                .Index(t => t.Users_UserId);
             
             CreateTable(
                 "dbo.ProductImages",
@@ -127,16 +120,25 @@ namespace Bangazon.Migrations
                         Image3 = c.String(),
                         Image4 = c.String(),
                         Image5 = c.String(),
+                        Products_ProductId = c.Int(),
                     })
-                .PrimaryKey(t => t.ProductImagesId);
+                .PrimaryKey(t => t.ProductImagesId)
+                .ForeignKey("dbo.Products", t => t.Products_ProductId)
+                .Index(t => t.Products_ProductId);
             
             CreateTable(
                 "dbo.Recommendations",
                 c => new
                     {
                         RecommendationId = c.Int(nullable: false, identity: true),
+                        Products_ProductId = c.Int(),
+                        Sender_UserId = c.Int(),
                     })
-                .PrimaryKey(t => t.RecommendationId);
+                .PrimaryKey(t => t.RecommendationId)
+                .ForeignKey("dbo.Products", t => t.Products_ProductId)
+                .ForeignKey("dbo.Users", t => t.Sender_UserId)
+                .Index(t => t.Products_ProductId)
+                .Index(t => t.Sender_UserId);
             
             CreateTable(
                 "dbo.ProductUsers",
@@ -155,28 +157,28 @@ namespace Bangazon.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.Users", "Recommendation_RecommendationId1", "dbo.Recommendations");
+            DropForeignKey("dbo.Recommendations", "Sender_UserId", "dbo.Users");
             DropForeignKey("dbo.Users", "Recommendation_RecommendationId", "dbo.Recommendations");
-            DropForeignKey("dbo.Products", "Recommendation_RecommendationId", "dbo.Recommendations");
-            DropForeignKey("dbo.Products", "ProductImage_ProductImagesId", "dbo.ProductImages");
-            DropForeignKey("dbo.Users", "PaymentMethod_PaymentMethodId", "dbo.PaymentMethods");
-            DropForeignKey("dbo.Products", "LineItem_LineItemId", "dbo.LineItems");
-            DropForeignKey("dbo.Orders", "LineItem_LineItemId", "dbo.LineItems");
-            DropForeignKey("dbo.Users", "Order_OrderId", "dbo.Orders");
+            DropForeignKey("dbo.Recommendations", "Products_ProductId", "dbo.Products");
+            DropForeignKey("dbo.ProductImages", "Products_ProductId", "dbo.Products");
+            DropForeignKey("dbo.PaymentMethods", "Users_UserId", "dbo.Users");
+            DropForeignKey("dbo.LineItems", "Products_ProductId", "dbo.Products");
+            DropForeignKey("dbo.LineItems", "Orders_OrderId", "dbo.Orders");
+            DropForeignKey("dbo.Orders", "Users_UserId", "dbo.Users");
             DropForeignKey("dbo.ProductUsers", "User_UserId", "dbo.Users");
             DropForeignKey("dbo.ProductUsers", "Product_ProductId", "dbo.Products");
             DropForeignKey("dbo.ProductCategories", "Product_ProductId", "dbo.Products");
             DropIndex("dbo.ProductUsers", new[] { "User_UserId" });
             DropIndex("dbo.ProductUsers", new[] { "Product_ProductId" });
+            DropIndex("dbo.Recommendations", new[] { "Sender_UserId" });
+            DropIndex("dbo.Recommendations", new[] { "Products_ProductId" });
+            DropIndex("dbo.ProductImages", new[] { "Products_ProductId" });
+            DropIndex("dbo.PaymentMethods", new[] { "Users_UserId" });
             DropIndex("dbo.ProductCategories", new[] { "Product_ProductId" });
-            DropIndex("dbo.Products", new[] { "Recommendation_RecommendationId" });
-            DropIndex("dbo.Products", new[] { "ProductImage_ProductImagesId" });
-            DropIndex("dbo.Products", new[] { "LineItem_LineItemId" });
-            DropIndex("dbo.Users", new[] { "Recommendation_RecommendationId1" });
             DropIndex("dbo.Users", new[] { "Recommendation_RecommendationId" });
-            DropIndex("dbo.Users", new[] { "PaymentMethod_PaymentMethodId" });
-            DropIndex("dbo.Users", new[] { "Order_OrderId" });
-            DropIndex("dbo.Orders", new[] { "LineItem_LineItemId" });
+            DropIndex("dbo.Orders", new[] { "Users_UserId" });
+            DropIndex("dbo.LineItems", new[] { "Products_ProductId" });
+            DropIndex("dbo.LineItems", new[] { "Orders_OrderId" });
             DropTable("dbo.ProductUsers");
             DropTable("dbo.Recommendations");
             DropTable("dbo.ProductImages");
