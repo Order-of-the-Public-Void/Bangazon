@@ -3,11 +3,12 @@
     let vm = this;
 
     vm.message = "This is login";
-    console.log(vm);
     vm.username = "";
     vm.password = "";
 
     vm.login = function () {
+
+        console.log(vm.username, vm.password);
         vm.error = "";
         vm.inProgress = true;
         $http({
