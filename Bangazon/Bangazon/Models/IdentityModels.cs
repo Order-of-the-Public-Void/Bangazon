@@ -29,5 +29,20 @@ namespace Bangazon.Models
         {
             return new ApplicationDbContext();
         }
-    }
+		public System.Data.Entity.DbSet<Bangazon.Models.LineItem> LineItems { get; set; }
+
+		public System.Data.Entity.DbSet<Bangazon.Models.Order> Orders { get; set; }
+
+		public System.Data.Entity.DbSet<Bangazon.Models.PaymentMethod> PaymentMethods { get; set; }
+
+		public System.Data.Entity.DbSet<Bangazon.Models.Product> Products { get; set; }
+
+		public System.Data.Entity.DbSet<Bangazon.Models.ProductCategory> ProductCategories { get; set; }
+
+		public System.Data.Entity.DbSet<Bangazon.Models.ProductImage> ProductImages { get; set; }
+
+		public System.Data.Entity.DbSet<Bangazon.Models.Recommendation> Recommendations { get; set; }
+
+		public System.Data.Entity.DbSet<Bangazon.Models.User> Users { get; set; }
+	}
 }
