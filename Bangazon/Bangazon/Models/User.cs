@@ -19,6 +19,7 @@ namespace Bangazon.Models
         public int Phone { get; set; }
         public string UserName { get; set; }
         public virtual List<Product> Products { get; set; }
+		public virtual List<Recommendation> Recommendations { get; set; }
 
     }
 }

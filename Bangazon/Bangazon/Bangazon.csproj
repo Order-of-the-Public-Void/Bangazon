@@ -241,6 +241,10 @@
     <Compile Include="Migrations\201711210059577_SetUpTables.Designer.cs">
       <DependentUpon>201711210059577_SetUpTables.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711210132399_UserRecommendations.cs" />
+    <Compile Include="Migrations\201711210132399_UserRecommendations.Designer.cs">
+      <DependentUpon>201711210132399_UserRecommendations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -349,6 +353,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711210059577_SetUpTables.resx">
       <DependentUpon>201711210059577_SetUpTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711210132399_UserRecommendations.resx">
+      <DependentUpon>201711210132399_UserRecommendations.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
