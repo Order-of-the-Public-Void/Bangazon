@@ -5,6 +5,11 @@
     vm.message = "My Account";
     vm.FName = "";
     vm.LName = "";
+    vm.Street = "";
+    vm.City = "";
+    vm.State = "";
+    vm.Zip = "";
+    vm.Phone = "";
 
     vm.editAccount = function () {
         console.log("in editAccount");

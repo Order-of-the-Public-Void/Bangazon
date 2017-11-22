@@ -1,8 +1,8 @@
 ﻿<section class="hero is-fullheight" id="userAccount">
     <div class="account-body">
         <div class="container">
-            <div class="columns is-centered">
-                <div class="column is-one-third-desktop is-10-mobile">
+            <div class="columns">
+                <div class="column is-one-half-desktop is-10-mobile">
                     <div class="box has-text-centered">
                         <!--
                         <div ng-show="error" class="notification is-danger">
@@ -27,11 +27,92 @@
                             </p>
                         </div>
                         <div class="field">
+                            <p class="control has-icons-left">
+                                <input ng-model="vm.Street" class="input" type="text" placeholder="Street Address">
+                                <span class="icon is-small is-left">
+                                    <i class="fa fa-lock"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="field">
+                            <p class="control has-icons-left">
+                                <input ng-model="vm.City" class="input" type="text" placeholder="City">
+                                <span class="icon is-small is-left">
+                                    <i class="fa fa-lock"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="field">
+                            <p class="control has-icons-left">
+                                <input ng-model="vm.State" class="input" type="text" placeholder="State">
+                                <span class="icon is-small is-left">
+                                    <i class="fa fa-lock"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="field">
+                            <p class="control has-icons-left">
+                                <input ng-model="vm.Zip" class="input" type="text" placeholder="Zip Code">
+                                <span class="icon is-small is-left">
+                                    <i class="fa fa-lock"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="field">
+                            <p class="control has-icons-left">
+                                <input ng-model="vm.Phone" class="input" type="text" placeholder="Phone">
+                                <span class="icon is-small is-left">
+                                    <i class="fa fa-lock"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="field">
                             <button class="button is-primary" ng-click="vm.editAccount()" ng-class="{'is-loading':inProgress}">Edit Account</button>
                         </div>
                     </div>
+                </div> <!-- column ... one-third... -->
+
+                <div class="column is-1"></div>
+
+                <div class="column">
+                    <div class="dropdown is-active">
+                        <div class="dropdown-trigger">
+                            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                                <span>Payment Options</span>
+                                <span class="icon is-small">
+                                    <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                </span>
+                            </button>
+                        </div>
+                        <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                            <div class="dropdown-content">
+                                <a href="#" class="dropdown-item">
+                                    Dropdown item
+                                </a>
+                                <a class="dropdown-item">
+                                    Other dropdown item
+                                </a>
+                                <a href="#" class="dropdown-item is-active">
+                                    Active dropdown item
+                                </a>
+                                <a href="#" class="dropdown-item">
+                                    Other dropdown item
+                                </a>
+                                <hr class="dropdown-divider">
+                                <a href="#" class="dropdown-item">
+                                    With a divider
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
+
+                <div class="column">
+                    <div class="field">
+                        <button class="button is-primary" ng-click="vm.orderHist()" ng-class="{'is-loading':inProgress}">Order History</button>
+                    </div>
+                </div>
+            </div> <!-- columns -->
+        </div> <!-- container -->
+    </div> <!-- account-body -->
 </section>
