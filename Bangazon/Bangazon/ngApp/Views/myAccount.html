@@ -1,0 +1,37 @@
+﻿<section class="hero is-fullheight" id="userAccount">
+    <div class="account-body">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-one-third-desktop is-10-mobile">
+                    <div class="box has-text-centered">
+                        <!--
+                        <div ng-show="error" class="notification is-danger">
+                            {{error}}
+                        </div>
+                        -->
+                        <h1>{{vm.message}}</h1>
+                        <div class="field">
+                            <p class="control has-icons-left">
+                                <input ng-model="vm.FName" class="input" type="text" placeholder="First Name">
+                                <span class="icon is-small is-left">
+                                    <i class="fa fa-user"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="field">
+                            <p class="control has-icons-left">
+                                <input ng-model="vm.LName" class="input" type="text" placeholder="Last Name">
+                                <span class="icon is-small is-left">
+                                    <i class="fa fa-lock"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="field">
+                            <button class="button is-primary" ng-click="vm.editAccount()" ng-class="{'is-loading':inProgress}">Edit Account</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

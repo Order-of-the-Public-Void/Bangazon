@@ -11,8 +11,58 @@
             templateUrl: "/ngApp/Views/login.html",
             controller: "loginController",
             controllerAs: 'vm'
-        }
-    );
+        })
+        .when("/mySettings/account",
+        {
+            templateUrl: "/ngApp/Views/myAccount.html",
+            controller: "myAccountController",
+            controllerAs: 'vm'
+        })
+        .when("/mySettings/paymentOptions",
+        {
+
+        })
+        .when("/mySettings/orderHistory",
+        {
+
+        })
+        .when("/mySettings/orderHistory/orderDetail",
+        {
+
+        })
+        .when("/sellProduct",
+        {
+
+        })
+        .when("/productDetail",
+        {
+
+        })
+        .when("/productCategories",
+        {
+
+        })
+        .when("/openOrder",
+        {
+
+        })
+        .when("/myProducts", {
+
+        })
+        .when("/recommendations",
+        {
+
+        })
+        .when("/wishList",
+        {
+
+        })
+        .when("favorites", {
+
+        })
+        .when("mainPage", {
+
+        });
 }]);
 
 app.run(["$rootScope", "$http", "$location", function ($rootScope, $http, $location) {
