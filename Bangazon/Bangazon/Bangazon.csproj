@@ -236,7 +236,6 @@
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ProductImagesController.cs" />
     <Compile Include="Controllers\RecommendationController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -245,13 +244,9 @@
     <Compile Include="Migrations\201711181621508_IdentitySetUp.Designer.cs">
       <DependentUpon>201711181621508_IdentitySetUp.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711210059577_SetUpTables.cs" />
-    <Compile Include="Migrations\201711210059577_SetUpTables.Designer.cs">
-      <DependentUpon>201711210059577_SetUpTables.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711210132399_UserRecommendations.cs" />
-    <Compile Include="Migrations\201711210132399_UserRecommendations.Designer.cs">
-      <DependentUpon>201711210132399_UserRecommendations.cs</DependentUpon>
+    <Compile Include="Migrations\201711220317468_SetUpTables.cs" />
+    <Compile Include="Migrations\201711220317468_SetUpTables.Designer.cs">
+      <DependentUpon>201711220317468_SetUpTables.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -264,7 +259,6 @@
     <Compile Include="Models\ProductCategory.cs" />
     <Compile Include="Models\ProductImage.cs" />
     <Compile Include="Models\Recommendation.cs" />
-    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
@@ -361,11 +355,8 @@
     <EmbeddedResource Include="Migrations\201711181621508_IdentitySetUp.resx">
       <DependentUpon>201711181621508_IdentitySetUp.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711210059577_SetUpTables.resx">
-      <DependentUpon>201711210059577_SetUpTables.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711210132399_UserRecommendations.resx">
-      <DependentUpon>201711210132399_UserRecommendations.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711220317468_SetUpTables.resx">
+      <DependentUpon>201711220317468_SetUpTables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -10,8 +10,8 @@ namespace Bangazon.Models
     {
 		[Key]
 		public int RecommendationId { get; set; }
-        public virtual User Sender { get; set; }
-        public virtual List<User> Receiver { get; set; }
+        public virtual ApplicationUser Sender { get; set; }
+        public virtual List<ApplicationUser> Receiver { get; set; }
         public virtual Product Products { get; set; }
     }
 }

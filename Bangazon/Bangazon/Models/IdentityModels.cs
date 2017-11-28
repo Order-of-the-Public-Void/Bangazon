@@ -1,4 +1,5 @@
-﻿using System.Security.Claims;
+﻿using System.Collections.Generic;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -16,7 +17,15 @@ namespace Bangazon.Models
             // Add custom user claims here
             return userIdentity;
         }
-    }
+		public string FName { get; set; }
+		public string LName { get; set; }
+		public string City { get; set; }
+		public string Street { get; set; }
+		public string State { get; set; }
+		public int Zip { get; set; }
+		public virtual List<Product> Products { get; set; }
+		public virtual List<Recommendation> Recommendations { get; set; }
+	}
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
@@ -43,6 +52,5 @@ namespace Bangazon.Models
 
 		public System.Data.Entity.DbSet<Bangazon.Models.Recommendation> Recommendations { get; set; }
 
-		public System.Data.Entity.DbSet<Bangazon.Models.User> Users { get; set; }
 	}
 }

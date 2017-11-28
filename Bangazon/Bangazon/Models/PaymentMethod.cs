@@ -10,7 +10,7 @@ namespace Bangazon.Models
     {
 		[Key]
 		public int PaymentMethodId { get; set; }
-        public virtual User Users { get; set; }
+        public virtual ApplicationUser Users { get; set; }
         public string PaymentType { get; set; }
         public string PaymentNickname { get; set; }
         public string BillingAddress { get; set; }
