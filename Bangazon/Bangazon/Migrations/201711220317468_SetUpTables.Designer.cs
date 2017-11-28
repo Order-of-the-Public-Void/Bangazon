@@ -7,13 +7,13 @@ namespace Bangazon.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class UserRecommendations : IMigrationMetadata
+    public sealed partial class SetUpTables : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(UserRecommendations));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(SetUpTables));
         
         string IMigrationMetadata.Id
         {
-            get { return "201711210132399_UserRecommendations"; }
+            get { return "201711220317468_SetUpTables"; }
         }
         
         string IMigrationMetadata.Source

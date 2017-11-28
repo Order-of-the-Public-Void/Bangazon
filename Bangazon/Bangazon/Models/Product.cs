@@ -10,7 +10,7 @@ namespace Bangazon.Models
     {
 		[Key]
 		public int ProductId { get; set; }
-        public virtual List <User> UserWishes { get; set; }
+        public virtual List <ApplicationUser> UserWishes { get; set; }
         public virtual List<ProductCategory> ProductCategories { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
